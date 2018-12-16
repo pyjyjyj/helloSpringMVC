@@ -8,7 +8,7 @@
 </head>
 <body>
 <p> Successfully Enrolment</p>
-<a href="/views/home.jsp">Go To home</a>
+<a href="${pageContext.request.contextPath}/">Go To home</a>
 
 </body>
 </html>

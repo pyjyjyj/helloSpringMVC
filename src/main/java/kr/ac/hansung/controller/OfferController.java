@@ -1,5 +1,6 @@
 package kr.ac.hansung.controller;
 
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,11 +35,15 @@ public class OfferController {
 	}
 	
 	@RequestMapping("/link")
-	public String showLink(Model model) {
+	public String showLink(Model model, HttpServletRequest request) {
+		year = request.getParameter("year");
+		semester = request.getParameter("semester");
+		System.out.println(year + " " + semester);
 		List<Offer> offers = offerService.getCurrentOffers(year, semester);
+		System.out.println(year + " " + semester);
 		model.addAttribute("offers", offers);
 
-		return "link";
+		return "offers";
 	}
 	
 
@@ -62,6 +67,8 @@ public class OfferController {
 			
 			return "enrolmented";
 		}
+		year = "2019";
+		semester = "1";
 		
 		offer.setYear(year);
 		offer.setSemester(semester);
